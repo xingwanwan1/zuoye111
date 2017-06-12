@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="content">
+
+		<div>
+		<script src="jquery-1.8.3.min.js"></script>
+		<script>
+			id=location.search.split("=")[1]
+			
+			$.ajax({
+				url:"/xia",
+				type:"post",
+				data:{ID:id},
+				success:function(data){
+					$(".content").text(data[0].xianame)
+				}
+			})
+			
+
+		</script>
+</body>
+</html>

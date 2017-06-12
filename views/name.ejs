@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>项目</p>
+	<ul>
+		 <%for(var i=0;i<name.length;i++){%>
+			<li class="btn" data-id=<%=name[i].ID%> ><%=name[i].name%> </li>
+		<%}%> 
+		<input type="text" name="ID" class="textID">
+		<input type="text" name="username" class="user">
+	
+		<button id="tian">添加</button>
+	</ul>
+	<script src="jquery-1.8.3.min.js"></script>
+	<script>
+
+		$("#tian").on("click",function(){
+			ID=$(".textID").val();
+			name=$(".user").val();
+			
+			$.ajax({
+				url:"/tianjia",
+				type:"post",
+				data:{ID:ID,name:name},
+				success:function(msg){
+					if(msg.code==0){
+						window.location.reload()
+					}
+					
+				}
+
+			})
+			
+		})
+		$(".btn").on("click",function(){
+			id=$(this).attr("data-id")
+			$.ajax({
+				url:"/xia",
+				type:"post",
+				data:{ID:id},
+				success:function(msg){
+					console.log(msg)
+						console.log(1)
+						window.location.href="/xianame?id="+id
+				}
+			})
+		})
+	</script>
+</body>
+</html>

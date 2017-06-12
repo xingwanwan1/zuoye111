@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		 <%for(var i=0;i<num.length;i++){%>
+			<li>id名为<%=num[i].ID%> 姓名为<%=num[i].username%> 密码为<%=num[i].password%> <button class="remove" data-id=<%=num[i].ID%> >删除</button></li>
+		<%}%> 
+	</ul>
+	<input type="text" name="ID" class="textID">
+	<input type="text" name="username" class="user">
+	<input type="text" name="password" class="psd">
+	<button id="add">添加</button>
+	<script src="jquery-1.8.3.min.js"></script>
+	<script>
+		
+
+		$(".remove").on("click",function(){
+			alert(12)
+			id=$(this).attr("data-id")
+			$.ajax({
+				url:"/delete",
+				type:"post",
+				data:{name:id},
+				success:function(msg){
+					if(msg.code==0){
+						window.location.reload()
+						//window.location.href="http://localhost:5002/detil"//删除不用刷新
+					}
+				}
+			})
+		})
+
+		$("#add").on("click",function(){
+			alert(12)
+			id=$(".textID").val();
+			user=$(".user").val();
+			psd=$(".psd").val();
+			console.log(id)
+			console.log(user)
+			console.log(psd)
+			$.ajax({
+				url:"/add",
+				type:"post",
+				data:{ID:id,username:user,password:psd},
+				success:function(msg){
+					console.log(msg)
+					if(msg.code==0){
+						window.location.reload()//删除不用刷新
+					}
+				}
+			})
+		})
+		/*$(".repalce").on("click",function(){
+			alert(12)
+			id=$(this).attr("data-id")
+			user=$(this).attr("data-user")
+			psd=$(this).attr("data-psd")
+			$(".textID").val(id)
+			$("user").val(user)
+			$("psd").val(psd)
+			id=$(".textID").val()
+			user=$("user").val()
+			psd=$("psd").val()
+			$.ajax({
+				url:"/delete",
+				type:"post",
+				data:{ID:id,username:user,password:psd},
+				success:function(msg){
+					if(msg.code==0){
+						window.location.reload()//删除不用刷新
+					}
+				}
+			})
+		})*/
+	</script>
+</body>
+</html>
