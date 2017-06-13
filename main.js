@@ -1,4 +1,4 @@
-var express=require("express"),
+const express=require("express"),
 	app=express(),
 	bodyparser=require("body-parser");
 	app.use(bodyparser.urlencoded({extended:false}))
@@ -10,7 +10,7 @@ var express=require("express"),
 	require("./config/configrouter.js")(app)
 	app.use(express.static("./satic"))
 	//Connection.end()//关闭数据库
-	app.listen(5002,function(){
+	app.listen(5002,()=>{
 		console.log(123)	
 	})
 	

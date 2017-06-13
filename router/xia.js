@@ -1,4 +1,4 @@
-var express=require("express"),
+const express=require("express"),
 	mysql=require("mysql"),
 	app=express(),
 	router=express.Router();

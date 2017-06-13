@@ -1,4 +1,4 @@
-var express=require("express"),
+const express=require("express"),
 	mysql=require("mysql"),
 	app=express(),
 	router=express.Router();
@@ -7,7 +7,7 @@ var express=require("express"),
 	router.post("/tianjia",function(req,res){
 		console.log(req.body.ID)
 		console.log(req.body.name)
-		Connection.query("insert into name(ID,name) values('"+req.body.ID+"','"+req.body.name+"')",function(err,result){
+		Connection.query("insert into name(ID,name) values('"+req.body.ID+"','"+req.body.name+"')",(err,result)=>{
 			res.send({'code':0,'msg':'添加成功'})
 			console.log(123)
 		})

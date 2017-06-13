@@ -17,27 +17,27 @@
 	</ul>
 	<script src="jquery-1.8.3.min.js"></script>
 	<script>
-		$("#tian").on("click",function(){
-			ID=$(".textID").val();
-			name=$(".user").val();
+		$("#tian").on("click",=>{
+			const ID=$(".textID").val(),
+					name=$(".user").val();
 			$.ajax({
 				url:"/tianjia",
 				type:"post",
 				data:{ID:ID,name:name},
-				success:function(msg){
+				success:(msg)=>{
 					if(msg.code==0){
 						window.location.reload()
 					}
 				}
 			})
 		})
-		$(".btn").on("click",function(){
-			var id=$(this).attr("data-id")
+		$(".btn").on("click",=>{
+			const id=$(this).attr("data-id")
 			$.ajax({
 				url:"/xia",
 				type:"post",
 				data:{ID:id},
-				success:function(msg){
+				success:(msg)=>{
 					window.location.href="/xianame?id="+id
 				}
 			})

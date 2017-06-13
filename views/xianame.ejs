@@ -31,12 +31,12 @@
 		</div>
 		<script src="jquery-1.8.3.min.js"></script>
 		<script>
-			id=location.search.split("=")[1]
+			const id=location.search.split("=")[1]
 			$.ajax({
 				url:"/xia",
 				type:"post",
 				data:{ID:id},
-				success:function(data){
+				success:(data)=>{
 					$("#content").text(data[0].xianame)
 					if (localStorage[id]){
 			            localStorage[id]=Number(localStorage[id])+1;
